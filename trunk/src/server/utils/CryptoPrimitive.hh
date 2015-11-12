@@ -16,7 +16,7 @@
 #define OPENSSL_THREAD_DEFINES
 #include <openssl/opensslconf.h>
 /*macro for OpenSSL debug*/
-#define OPENSSL_DEBUG 1
+#define OPENSSL_DEBUG 0
 /*for the use of mutex lock*/
 #include <pthread.h>
 
