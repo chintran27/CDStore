@@ -166,7 +166,7 @@ int main(int argc, char *argv[]){
             }
             total+=ret;
         }
-        long long tt, unique;
+        long long tt = 0, unique = 0;
         uploaderObj->indicateEnd(&tt, &unique);
         split2 = timerSplit(&timer2);
 
