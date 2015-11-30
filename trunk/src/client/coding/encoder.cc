@@ -81,18 +81,24 @@ void* Encoder::collect(void* param){
 
             /* copy file header information */
             input.fileObj.file_header.fileSize = temp.file_header.fileSize;
-            input.fileObj.file_header.fullNameSize = temp.file_header.fullNameSize;
             input.fileObj.file_header.numOfPastSecrets = 0;
             input.fileObj.file_header.sizeOfPastSecrets = 0;
             input.fileObj.file_header.numOfComingSecrets = 0;
             input.fileObj.file_header.sizeOfComingSecrets = 0;
+            
+            unsigned char tmp[temp.file_header.fullNameSize*32];
+            int tmp_s;
+            obj->encodeObj_[0]->encoding(temp.file_header.data, temp.file_header.fullNameSize, tmp, &(tmp_s));
+            
+            input.fileObj.file_header.fullNameSize = tmp_s;
 
             /* copy file name */
-            memcpy(input.fileObj.data, temp.file_header.data, temp.file_header.fullNameSize);
+            //memcpy(input.fileObj.data, temp.file_header.data, temp.file_header.fullNameSize);
 
 #ifndef ENCODE_ONLY_MODE
             /* add the object to each cloud's uploader buffer */
             for(int i = 0; i < obj->n_; i++){
+                memcpy(input.fileObj.data, tmp+i*tmp_s, input.fileObj.file_header.fullNameSize);
                 obj->uploadObj_->add(&input, sizeof(input), i);
             }
 #endif

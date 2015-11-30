@@ -170,12 +170,16 @@ int Downloader::downloadFile(char* filename, int namesize, int numOfCloud){
     unsigned char *shareBuffer;
     shareBuffer = (unsigned char*)malloc(sizeof(unsigned char)*RING_BUFFER_DATA_SIZE*MAX_NUMBER_OF_CLOUDS);
 
+    unsigned char tmp[namesize*32];
+    int tmp_s;
+
+    decodeObj_->decodeObj_[0]->encoding((unsigned char*)filename, namesize, tmp, &(tmp_s));
     /* add init object for download */
     init_t input;
     for (i = 0; i < numOfCloud; i++){
         input.type = 1;
-        input.filename = filename;
-        input.namesize = namesize;
+        memcpy(input.filename, tmp+i*tmp_s, tmp_s);
+        input.namesize = tmp_s;
         signalBuffer_[i]->Insert(&input, sizeof(init_t));
     }
 
