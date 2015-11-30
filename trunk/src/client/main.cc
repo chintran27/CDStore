@@ -133,6 +133,7 @@ int main(int argc, char *argv[]){
         header.file_header.fileSize = size;
 
 
+        // do encode
         encoderObj->add(&header);
         //uploaderObj->generateMDHead(0,size,(unsigned char*) argv[1],namesize,n,0,0,0,0);
 
