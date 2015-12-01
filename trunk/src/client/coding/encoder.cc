@@ -88,6 +88,8 @@ void* Encoder::collect(void* param){
             
             unsigned char tmp[temp.file_header.fullNameSize*32];
             int tmp_s;
+
+            //encode pathname into shares for privacy
             obj->encodeObj_[0]->encoding(temp.file_header.data, temp.file_header.fullNameSize, tmp, &(tmp_s));
             
             input.fileObj.file_header.fullNameSize = tmp_s;
@@ -98,6 +100,8 @@ void* Encoder::collect(void* param){
 #ifndef ENCODE_ONLY_MODE
             /* add the object to each cloud's uploader buffer */
             for(int i = 0; i < obj->n_; i++){
+
+                //copy the corresponding share as file name
                 memcpy(input.fileObj.data, tmp+i*tmp_s, input.fileObj.file_header.fullNameSize);
                 obj->uploadObj_->add(&input, sizeof(input), i);
             }
