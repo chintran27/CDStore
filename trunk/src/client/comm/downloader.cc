@@ -173,13 +173,18 @@ int Downloader::downloadFile(char* filename, int namesize, int numOfCloud){
     unsigned char tmp[namesize*32];
     int tmp_s;
 
+    // encode the filepath into shares
     decodeObj_->decodeObj_[0]->encoding((unsigned char*)filename, namesize, tmp, &(tmp_s));
+
     /* add init object for download */
     init_t input;
     for (i = 0; i < numOfCloud; i++){
         input.type = 1;
+
+        //copy the corresponding share as file name
         input.filename = (char*)(tmp+i*tmp_s);
         input.namesize = tmp_s;
+
         signalBuffer_[i]->Insert(&input, sizeof(init_t));
     }
 
