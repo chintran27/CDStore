@@ -1,7 +1,5 @@
-# CDStore
+# CDSTORE
 
-# CONTENTS OF THIS FILE
-   
  * Introduction
  * Requirements
  * Installation
