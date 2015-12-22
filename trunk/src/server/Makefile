@@ -1,6 +1,6 @@
 CC = g++
 CFLAGS = -O3 -Wall
-LIBS = -lcrypto -lssl -lpthread 
+LIBS = -lcrypto -lssl -lpthread -lsnappy 
 INCLUDES = -I./lib/leveldb/include -I./backend/ -I./utils/ -I./lib/cryptopp -I./comm/ -I./dedup/ 
 JERASURE_OBJS = 
 MAIN_OBJS = ./utils/CryptoPrimitive.o ./dedup/DedupCore.o ./backend/BackendStorer.o ./comm/server.o

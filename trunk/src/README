@@ -1,5 +1,6 @@
-# CDSTORE
-
+CONTENTS OF THIS FILE
+---------------------
+   
  * Introduction
  * Requirements
  * Installation
@@ -8,12 +9,14 @@
  * Example
  * Maintainers
 
-# INTRODUCTION
+INTRODUCTION
+------------
 
 CDStore builds on an augmented secret sharing scheme called convergent dispersal, which supports deduplication by using deterministic content-derived hashes as inputs to secret sharing. It combines convergent dispersal with two-stage deduplication to achieve both bandwidth and storage savings and be robust against side-channel attacks. 
 
 
-# REQUIREMENTS
+REQUIREMENTS
+------------
 
 CDStore is built on Ubuntu 12.04.3 LTS with gcc version 4.6.3.
 
@@ -27,7 +30,8 @@ This software requires the following libraries:
 The GF-Complete and LevelDB are packed in /client/lib/ and /server/lib/ respectively.
 
 
-# INSTALLATION
+INSTALLATION
+------------
 
 
 For linux user you can install the LevelDB dependency, OpenSSL and Boost by the following:
@@ -35,7 +39,8 @@ For linux user you can install the LevelDB dependency, OpenSSL and Boost by the 
  * sudo apt-get install libssl1.0.0 libboost-all-dev libsnappy-dev
 
 
-# CONFIGURATION
+CONFIGURATION
+-------------
 
 
  * Configure the server (CDStore requires at least 4 storage server)
@@ -70,7 +75,8 @@ For linux user you can install the LevelDB dependency, OpenSSL and Boost by the 
 		- set chunk and secure parameters following the comments
 		- set the number of storage nodes according to your running servers
 
-# MAKE
+MAKE
+----
 
 
 	To make a client, on the client machine:
@@ -85,7 +91,8 @@ For linux user you can install the LevelDB dependency, OpenSSL and Boost by the 
 
 
 
-# EXAMPLE
+EXAMPLE
+-------
 
  * After successful make
 
@@ -107,7 +114,8 @@ For linux user you can install the LevelDB dependency, OpenSSL and Boost by the 
 
 
 
-# MAINTAINER
+MAINTAINER
+----------
 
  * Current maintainer
 
